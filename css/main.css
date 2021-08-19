@@ -926,7 +926,7 @@ img[srcset] {
   font-weight: bold;
 }
 .markdown-body pre {
-  font-size: 85% !important;
+  font-size: 90% !important;
 }
 .markdown-body pre code {
   overflow-x: auto;
