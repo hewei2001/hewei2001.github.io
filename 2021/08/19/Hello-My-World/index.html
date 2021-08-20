@@ -56,7 +56,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"hwcoder.top","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"hewei2001.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -247,7 +247,7 @@
 <h2 id="搭建历程"><a href="#搭建历程" class="headerlink" title="搭建历程"></a>搭建历程</h2><h3 id="1-安装-Node-js"><a href="#1-安装-Node-js" class="headerlink" title="1. 安装 Node.js"></a>1. 安装 Node.js</h3><p>官网：<a href="nodejs.org">nodejs.org</a></p>
 <p>安装后在 cmd 命令行输入 <code>node -v</code> 即可查看版本。</p>
 <h3 id="2-注册-GitHub"><a href="#2-注册-GitHub" class="headerlink" title="2. 注册 GitHub"></a>2. 注册 GitHub</h3><p>创建仓库：<a target="_blank" rel="noopener" href="https://github.com/hewei2001/hewei2001.github.io">https://github.com/hewei2001/hewei2001.github.io</a></p>
-<p>此时在浏览器中已经可以访问域名：<a target="_blank" rel="noopener" href="https://hewei2001.github.io/">https://hewei2001.github.io</a></p>
+<p>此时在浏览器中已经可以访问域名：<a href="https://hewei2001.github.io/">https://hewei2001.github.io</a></p>
 <p>如果仓库取了其他名字，最后访问的域名会是：https://用户名.github.io/仓库名/</p>
 <h3 id="3-下载-Git"><a href="#3-下载-Git" class="headerlink" title="3. 下载 Git"></a>3. 下载 Git</h3><p>官网：<a href="gitforwindows.org">gitforwindows.org</a></p>
 <p>安装时按照默认配置即可，其中有个 MinTTY 终端模拟器的选项会默认选上，如果不选则会使用 Windows 自带的终端 cmd 显示 Git Bash。</p>
@@ -291,7 +291,7 @@
 <h3 id="7-将-Hexo-发布至-GitHub"><a href="#7-将-Hexo-发布至-GitHub" class="headerlink" title="7. 将 Hexo 发布至 GitHub"></a>7. 将 Hexo 发布至 GitHub</h3><p>打开路径 <code>hewei2001/_config.yml</code>，更改基础参数。</p>
 <ul>
 <li><code>#Site</code> 部分的站点描述自行修改</li>
-<li><code>#URL</code> 部分，将链接改为 <a target="_blank" rel="noopener" href="https://hewei2001.github.io/">https://hewei2001.github.io</a> </li>
+<li><code>#URL</code> 部分，将链接改为 <a href="https://hewei2001.github.io/">https://hewei2001.github.io</a> </li>
 <li><code>#Deployment</code> 部分<ul>
 <li> <code>type</code> 改为 git</li>
 <li><code>repo</code> 改为 <a target="_blank" rel="noopener" href="https://github.com/hewei2001/hewei2001.github.io.git">https://github.com/hewei2001/hewei2001.github.io.git</a></li>
@@ -306,7 +306,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">$ hexo cl<br>$ hexo g<br>$ hexo d  <span class="hljs-comment"># 表示 deploy，安装了上面的 hexo-deployer-git 才可用</span><br></code></pre></div></td></tr></table></figure>
 
 <p>初次使用该操作可能会弹出一个 GitHub 登录界面，用于当前主机的身份验证。</p>
-<p>在浏览器中访问 <a target="_blank" rel="noopener" href="https://hewei2001.github.io/">https://hewei2001.github.io</a>  即可查看站点。</p>
+<p>在浏览器中访问 <a href="https://hewei2001.github.io/">https://hewei2001.github.io</a>  即可查看站点。</p>
 <h2 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h2><p>本站采用的是 Fluid 主题，以下的配置在路径 <code>hewei2001/_config.fluid.yml</code> 中可以实现。该文件的介绍参见 <a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/guide/#%E6%96%87%E7%AB%A0%E9%A1%B5%E9%A1%B6%E9%83%A8%E5%A4%A7%E5%9B%BE">主题配置指南</a> 。以下仅介绍部分较为特殊的配置，其他内容可在指南中找到。</p>
 <h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><p><code>lib</code>: 选择生成高亮的库，可选项有 highlightjs 和 prismjs，对应下面两组配置。</p>
 <p>这里选择 <code>highlightjs</code>，将 <code>style</code> 修改为 <code>Night Owl</code> 风格，将 <code>bg_color</code> 修改为 <code>true</code> 以适配暗色代码框。</p>
