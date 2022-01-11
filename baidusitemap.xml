@@ -1,28 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://hwcoder.top/ML-Note-4.html</loc>
-    <lastmod>2022-01-06</lastmod>
-  </url>
-  <url>
-    <loc>https://hwcoder.top/ML-Note-3.html</loc>
-    <lastmod>2022-01-06</lastmod>
-  </url>
-  <url>
-    <loc>https://hwcoder.top/ML-Note-2.html</loc>
-    <lastmod>2022-01-06</lastmod>
-  </url>
-  <url>
-    <loc>https://hwcoder.top/ML-Note-1.html</loc>
-    <lastmod>2022-01-06</lastmod>
-  </url>
-  <url>
-    <loc>https://hwcoder.top/Python-Note-2.html</loc>
-    <lastmod>2022-01-06</lastmod>
+    <loc>https://hwcoder.top/ML-Note-5.html</loc>
+    <lastmod>2022-01-11</lastmod>
   </url>
   <url>
     <loc>https://hwcoder.top/Python-Note-3.html</loc>
-    <lastmod>2022-01-06</lastmod>
+    <lastmod>2022-01-11</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/Python-Note-2.html</loc>
+    <lastmod>2022-01-11</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/Python-Note-1.html</loc>
+    <lastmod>2022-01-11</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/ML-Note-4.html</loc>
+    <lastmod>2022-01-10</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/ML-Note-3.html</loc>
+    <lastmod>2022-01-10</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/ML-Note-2.html</loc>
+    <lastmod>2022-01-10</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/How-To-Read-A-Paper.html</loc>
+    <lastmod>2022-01-10</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/ML-Note-1.html</loc>
+    <lastmod>2022-01-09</lastmod>
   </url>
   <url>
     <loc>https://hwcoder.top/PR-Note-4.html</loc>
@@ -31,10 +43,6 @@
   <url>
     <loc>https://hwcoder.top/PR-Note-3.html</loc>
     <lastmod>2022-01-06</lastmod>
-  </url>
-  <url>
-    <loc>https://hwcoder.top/How-To-Read-A-Paper.html</loc>
-    <lastmod>2022-01-02</lastmod>
   </url>
   <url>
     <loc>https://hwcoder.top/Software-Engineering-2.html</loc>
@@ -47,10 +55,6 @@
   <url>
     <loc>https://hwcoder.top/Database-System.html</loc>
     <lastmod>2022-01-01</lastmod>
-  </url>
-  <url>
-    <loc>https://hwcoder.top/Python-Note-1.html</loc>
-    <lastmod>2021-12-26</lastmod>
   </url>
   <url>
     <loc>https://hwcoder.top/Git-Note-4.html</loc>
