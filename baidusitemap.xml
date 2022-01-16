@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://hwcoder.top/How-To-Read-A-Paper.html</loc>
+    <lastmod>2022-01-16</lastmod>
+  </url>
+  <url>
     <loc>https://hwcoder.top/ML-Note-6.html</loc>
-    <lastmod>2022-01-15</lastmod>
+    <lastmod>2022-01-16</lastmod>
   </url>
   <url>
     <loc>https://hwcoder.top/ML-Note-5.html</loc>
@@ -23,10 +27,6 @@
   <url>
     <loc>https://hwcoder.top/Python-Note-2.html</loc>
     <lastmod>2022-01-15</lastmod>
-  </url>
-  <url>
-    <loc>https://hwcoder.top/How-To-Read-A-Paper.html</loc>
-    <lastmod>2022-01-14</lastmod>
   </url>
   <url>
     <loc>https://hwcoder.top/Python-Note-3.html</loc>
