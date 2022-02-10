@@ -1,20 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://hwcoder.top/How-To-Read-A-Paper.html</loc>
-    <lastmod>2022-01-16</lastmod>
-  </url>
-  <url>
-    <loc>https://hwcoder.top/ML-Note-6.html</loc>
-    <lastmod>2022-01-16</lastmod>
+    <loc>https://hwcoder.top/ML-Note-7.html</loc>
+    <lastmod>2022-02-10</lastmod>
   </url>
   <url>
     <loc>https://hwcoder.top/ML-Note-5.html</loc>
-    <lastmod>2022-01-15</lastmod>
+    <lastmod>2022-02-10</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/Python-Note-2.html</loc>
+    <lastmod>2022-02-10</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/Python-Note-1.html</loc>
+    <lastmod>2022-02-09</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/ML-Note-6.html</loc>
+    <lastmod>2022-02-09</lastmod>
   </url>
   <url>
     <loc>https://hwcoder.top/ML-Note-4.html</loc>
-    <lastmod>2022-01-15</lastmod>
+    <lastmod>2022-02-09</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/Python-Note-3.html</loc>
+    <lastmod>2022-01-26</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/How-To-Read-A-Paper.html</loc>
+    <lastmod>2022-01-21</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/Hello-My-World.html</loc>
+    <lastmod>2022-01-16</lastmod>
   </url>
   <url>
     <loc>https://hwcoder.top/ML-Note-1.html</loc>
@@ -23,18 +43,6 @@
   <url>
     <loc>https://hwcoder.top/ML-Note-2.html</loc>
     <lastmod>2022-01-15</lastmod>
-  </url>
-  <url>
-    <loc>https://hwcoder.top/Python-Note-2.html</loc>
-    <lastmod>2022-01-15</lastmod>
-  </url>
-  <url>
-    <loc>https://hwcoder.top/Python-Note-3.html</loc>
-    <lastmod>2022-01-11</lastmod>
-  </url>
-  <url>
-    <loc>https://hwcoder.top/Python-Note-1.html</loc>
-    <lastmod>2022-01-11</lastmod>
   </url>
   <url>
     <loc>https://hwcoder.top/ML-Note-3.html</loc>
@@ -67,10 +75,6 @@
   <url>
     <loc>https://hwcoder.top/DB-Project.html</loc>
     <lastmod>2021-12-11</lastmod>
-  </url>
-  <url>
-    <loc>https://hwcoder.top/Hello-My-World.html</loc>
-    <lastmod>2021-12-08</lastmod>
   </url>
   <url>
     <loc>https://hwcoder.top/Hexo-Configuration.html</loc>
