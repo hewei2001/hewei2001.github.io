@@ -1,7 +1,7 @@
 /* global Fluid */
 
 /**
- * Modify by https://blog.skk.moe/post/hello-darkmode-my-old-friend/
+ * Modified from https://blog.skk.moe/post/hello-darkmode-my-old-friend/
  */
 (function(window, document) {
   var rootElement = document.documentElement;
@@ -101,6 +101,9 @@
     // 根据当前模式设置图标
     setButtonIcon(current);
 
+    // 设置代码高亮
+    setHighlightCSS(current);
+
     // 设置其他应用
     setApplications(current);
   }
@@ -176,6 +179,39 @@
     }
   }
 
+  function setHighlightCSS(schema) {
+    // 启用对应的代码高亮的样式
+    var lightCss = document.getElementById('highlight-css');
+    var darkCss = document.getElementById('highlight-css-dark');
+    if (schema === 'dark') {
+      if (darkCss) {
+        darkCss.removeAttribute('disabled');
+      }
+      if (lightCss) {
+        lightCss.setAttribute('disabled', '');
+      }
+    } else {
+      if (lightCss) {
+        lightCss.removeAttribute('disabled');
+      }
+      if (darkCss) {
+        darkCss.setAttribute('disabled', '');
+      }
+    }
+
+    setTimeout(function() {
+      // 设置代码块组件样式
+      document.querySelectorAll('.markdown-body pre').forEach((pre) => {
+        var cls = Fluid.utils.getBackgroundLightness(pre) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+        var widget = pre.querySelector('.code-widget-light, .code-widget-dark');
+        if (widget) {
+          widget.classList.remove('code-widget-light', 'code-widget-dark');
+          widget.classList.add(cls);
+        }
+      });
+    }, 200);
+  }
+
   function setApplications(schema) {
     // 设置 remark42 评论主题
     if (window.REMARK42) {
@@ -188,7 +224,7 @@
     }
 
     // 设置 utterances 评论主题
-    var utterances = document.querySelector('iframe');
+    var utterances = document.querySelector('.utterances-frame');
     if (utterances) {
       var theme = window.UtterancesThemeLight;
       if (schema === 'dark') {
