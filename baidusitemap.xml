@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://hwcoder.top/Algo-Note-2.html</loc>
+    <lastmod>2022-08-27</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/Algo-Note-1.html</loc>
+    <lastmod>2022-08-27</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/Awesome-Sites.html</loc>
+    <lastmod>2022-08-14</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/Linux-Note-3.html</loc>
+    <lastmod>2022-08-11</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/PR-Note-3.html</loc>
+    <lastmod>2022-06-27</lastmod>
+  </url>
+  <url>
     <loc>https://hwcoder.top/Uplift-1.html</loc>
     <lastmod>2022-06-21</lastmod>
   </url>
@@ -65,10 +85,6 @@
     <lastmod>2022-05-19</lastmod>
   </url>
   <url>
-    <loc>https://hwcoder.top/Linux-Note-3.html</loc>
-    <lastmod>2022-05-19</lastmod>
-  </url>
-  <url>
     <loc>https://hwcoder.top/Linux-Note-4.html</loc>
     <lastmod>2022-05-19</lastmod>
   </url>
@@ -86,10 +102,6 @@
   </url>
   <url>
     <loc>https://hwcoder.top/PR-Note-4.html</loc>
-    <lastmod>2022-05-19</lastmod>
-  </url>
-  <url>
-    <loc>https://hwcoder.top/PR-Note-3.html</loc>
     <lastmod>2022-05-19</lastmod>
   </url>
   <url>
@@ -182,10 +194,6 @@
   </url>
   <url>
     <loc>https://hwcoder.top/DB-Project.html</loc>
-    <lastmod>2022-05-19</lastmod>
-  </url>
-  <url>
-    <loc>https://hwcoder.top/Awesome-Sites.html</loc>
     <lastmod>2022-05-19</lastmod>
   </url>
 </urlset> 
