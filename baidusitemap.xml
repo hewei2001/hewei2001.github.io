@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://hwcoder.top/BaoYan-Memoir.html</loc>
+    <lastmod>2022-09-29</lastmod>
+  </url>
+  <url>
     <loc>https://hwcoder.top/Algo-Note-2.html</loc>
-    <lastmod>2022-08-27</lastmod>
+    <lastmod>2022-09-28</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/Hexo-Configuration.html</loc>
+    <lastmod>2022-09-25</lastmod>
   </url>
   <url>
     <loc>https://hwcoder.top/Algo-Note-1.html</loc>
-    <lastmod>2022-08-27</lastmod>
+    <lastmod>2022-09-19</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/Python-Note-1.html</loc>
+    <lastmod>2022-09-18</lastmod>
   </url>
   <url>
     <loc>https://hwcoder.top/Awesome-Sites.html</loc>
@@ -33,10 +45,6 @@
     <lastmod>2022-06-01</lastmod>
   </url>
   <url>
-    <loc>https://hwcoder.top/Python-Note-1.html</loc>
-    <lastmod>2022-05-23</lastmod>
-  </url>
-  <url>
     <loc>https://hwcoder.top/ML-Note-7.html</loc>
     <lastmod>2022-05-23</lastmod>
   </url>
@@ -50,10 +58,6 @@
   </url>
   <url>
     <loc>https://hwcoder.top/Database-System.html</loc>
-    <lastmod>2022-05-19</lastmod>
-  </url>
-  <url>
-    <loc>https://hwcoder.top/Hexo-Configuration.html</loc>
     <lastmod>2022-05-19</lastmod>
   </url>
   <url>
