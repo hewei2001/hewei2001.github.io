@@ -1,55 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://hwcoder.top/Python-Note-4.html</loc>
-    <lastmod>2023-07-12</lastmod>
+    <loc>https://hwcoder.top/Linux-Note-4.html</loc>
+    <lastmod>2024-01-08</lastmod>
   </url>
   <url>
-    <loc>https://hwcoder.top/Linux-Note-2.html</loc>
-    <lastmod>2023-07-04</lastmod>
+    <loc>https://hwcoder.top/PyTorch-Note-1.html</loc>
+    <lastmod>2023-12-31</lastmod>
   </url>
   <url>
     <loc>https://hwcoder.top/Linux-Note-1.html</loc>
-    <lastmod>2023-07-04</lastmod>
+    <lastmod>2023-12-31</lastmod>
   </url>
   <url>
-    <loc>https://hwcoder.top/Linux-Note-4.html</loc>
-    <lastmod>2023-07-04</lastmod>
+    <loc>https://hwcoder.top/Linux-Note-2.html</loc>
+    <lastmod>2023-12-30</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/Awesome-Sites.html</loc>
+    <lastmod>2023-12-26</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/Linux-Note-3.html</loc>
+    <lastmod>2023-11-12</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/Python-Note-2.html</loc>
+    <lastmod>2023-10-31</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/Python-Note-4.html</loc>
+    <lastmod>2023-09-30</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/Git-Note-4.html</loc>
+    <lastmod>2023-09-26</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/LeetCode-Greedy.html</loc>
+    <lastmod>2023-09-19</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/Hexo-Configuration.html</loc>
+    <lastmod>2023-08-01</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/Zotero-Note-1.html</loc>
+    <lastmod>2023-07-31</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/FudanNLP-LI-Bib.html</loc>
+    <lastmod>2023-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/Read-Paper.html</loc>
+    <lastmod>2023-07-18</lastmod>
   </url>
   <url>
     <loc>https://hwcoder.top/Python-Note-1.html</loc>
     <lastmod>2023-07-03</lastmod>
   </url>
   <url>
-    <loc>https://hwcoder.top/Hexo-Configuration.html</loc>
-    <lastmod>2023-05-16</lastmod>
-  </url>
-  <url>
-    <loc>https://hwcoder.top/Read-Paper.html</loc>
-    <lastmod>2023-05-16</lastmod>
-  </url>
-  <url>
-    <loc>https://hwcoder.top/Zotero-Note-1.html</loc>
-    <lastmod>2023-05-09</lastmod>
-  </url>
-  <url>
-    <loc>https://hwcoder.top/Awesome-Sites.html</loc>
-    <lastmod>2023-05-06</lastmod>
-  </url>
-  <url>
-    <loc>https://hwcoder.top/Uplift-1.html</loc>
+    <loc>https://hwcoder.top/Uplift-Modeling.html</loc>
     <lastmod>2023-04-02</lastmod>
   </url>
   <url>
-    <loc>https://hwcoder.top/Uplift-2.html</loc>
+    <loc>https://hwcoder.top/Uplift-Paper-Collection.html</loc>
     <lastmod>2023-04-02</lastmod>
   </url>
   <url>
     <loc>https://hwcoder.top/LeetCode-String.html</loc>
-    <lastmod>2023-03-22</lastmod>
-  </url>
-  <url>
-    <loc>https://hwcoder.top/PyTorch-Note-1.html</loc>
     <lastmod>2023-03-22</lastmod>
   </url>
   <url>
@@ -93,10 +113,6 @@
     <lastmod>2023-03-01</lastmod>
   </url>
   <url>
-    <loc>https://hwcoder.top/LeetCode-Greedy.html</loc>
-    <lastmod>2023-02-22</lastmod>
-  </url>
-  <url>
     <loc>https://hwcoder.top/LeetCode-Bitwise.html</loc>
     <lastmod>2023-02-22</lastmod>
   </url>
@@ -123,14 +139,6 @@
   <url>
     <loc>https://hwcoder.top/ML-Note-7.html</loc>
     <lastmod>2023-01-04</lastmod>
-  </url>
-  <url>
-    <loc>https://hwcoder.top/Python-Note-2.html</loc>
-    <lastmod>2022-12-21</lastmod>
-  </url>
-  <url>
-    <loc>https://hwcoder.top/FudanNLP-LI-Bib.html</loc>
-    <lastmod>2022-12-06</lastmod>
   </url>
   <url>
     <loc>https://hwcoder.top/ML-Note-13.html</loc>
@@ -237,10 +245,6 @@
     <lastmod>2022-11-09</lastmod>
   </url>
   <url>
-    <loc>https://hwcoder.top/Linux-Note-3.html</loc>
-    <lastmod>2022-08-11</lastmod>
-  </url>
-  <url>
     <loc>https://hwcoder.top/PR-Note-3.html</loc>
     <lastmod>2022-06-27</lastmod>
   </url>
@@ -262,10 +266,6 @@
   </url>
   <url>
     <loc>https://hwcoder.top/Git-Note-3.html</loc>
-    <lastmod>2022-05-19</lastmod>
-  </url>
-  <url>
-    <loc>https://hwcoder.top/Git-Note-4.html</loc>
     <lastmod>2022-05-19</lastmod>
   </url>
   <url>
