@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://hwcoder.top/Linux-Note-3.html</loc>
+    <lastmod>2024-05-06</lastmod>
+  </url>
+  <url>
     <loc>https://hwcoder.top/Linux-Note-4.html</loc>
-    <lastmod>2024-01-08</lastmod>
+    <lastmod>2024-05-06</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/Git-Note-4.html</loc>
+    <lastmod>2024-04-20</lastmod>
   </url>
   <url>
     <loc>https://hwcoder.top/PyTorch-Note-1.html</loc>
@@ -21,20 +29,12 @@
     <lastmod>2023-12-26</lastmod>
   </url>
   <url>
-    <loc>https://hwcoder.top/Linux-Note-3.html</loc>
-    <lastmod>2023-11-12</lastmod>
-  </url>
-  <url>
     <loc>https://hwcoder.top/Python-Note-2.html</loc>
     <lastmod>2023-10-31</lastmod>
   </url>
   <url>
     <loc>https://hwcoder.top/Python-Note-4.html</loc>
     <lastmod>2023-09-30</lastmod>
-  </url>
-  <url>
-    <loc>https://hwcoder.top/Git-Note-4.html</loc>
-    <lastmod>2023-09-26</lastmod>
   </url>
   <url>
     <loc>https://hwcoder.top/LeetCode-Greedy.html</loc>
