@@ -2,7 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://hwcoder.top/Manual-Coding-1.html</loc>
-    <lastmod>2024-07-07</lastmod>
+    <lastmod>2024-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/Manual-Coding-2.html</loc>
+    <lastmod>2024-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/Manual-Coding-3.html</loc>
+    <lastmod>2024-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/PyTorch-Note-1.html</loc>
+    <lastmod>2024-07-08</lastmod>
   </url>
   <url>
     <loc>https://hwcoder.top/Vim-Note-1.html</loc>
@@ -55,10 +67,6 @@
   <url>
     <loc>https://hwcoder.top/Git-Note-4.html</loc>
     <lastmod>2024-04-20</lastmod>
-  </url>
-  <url>
-    <loc>https://hwcoder.top/PyTorch-Note-1.html</loc>
-    <lastmod>2023-12-31</lastmod>
   </url>
   <url>
     <loc>https://hwcoder.top/Linux-Note-2.html</loc>
