@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://hwcoder.top/OpenAI-o1-Series.html</loc>
+    <lastmod>2024-09-13</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/Linux-Note-4.html</loc>
+    <lastmod>2024-08-12</lastmod>
+  </url>
+  <url>
     <loc>https://hwcoder.top/Docker-Note-2.html</loc>
     <lastmod>2024-08-07</lastmod>
   </url>
@@ -74,10 +82,6 @@
   </url>
   <url>
     <loc>https://hwcoder.top/Linux-Note-3.html</loc>
-    <lastmod>2024-05-06</lastmod>
-  </url>
-  <url>
-    <loc>https://hwcoder.top/Linux-Note-4.html</loc>
     <lastmod>2024-05-06</lastmod>
   </url>
   <url>
