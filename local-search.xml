@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>RL 学习笔记 #7 值函数近似和 DQN 算法</title>
+    <link href="/RL-Note-7.html"/>
+    <url>/RL-Note-7.html</url>
+    
+    <content type="html"><![CDATA[<p>前面介绍的 SARSA 和 Q-Learning等算法，实际上是基于<strong>表格形式</strong>（TabularRepresentation）的值函数学习方法。这个表格就是所谓的<strong>Q-Table</strong> —— 可以将 <spanclass="math inline">\(q(s,a)\)</span> 放置到一个二维表格，将 <spanclass="math inline">\(v(s)\)</span> 放置到一个一维表格。尽管这些方法在<strong>小规模、离散状态空间</strong>中能够很好地工作，但随着状态空间的扩展，存储和更新表格的代价变得难以承受，且无法<strong>泛化</strong>到未知状态。</p><p>为了克服这一问题，我们需要引入<strong>值函数近似</strong>（ValueFunction Approximation）方法。举个例子，对于组状态 <spanclass="math inline">\(s_1, \ldots, s_N\)</span>，他们的状态值为 <spanclass="math inline">\(v(s_1),\ldots,v(s_N)\)</span>。当 <spanclass="math inline">\(N\)</span>非常大的时候，我们尝试用一个简单的曲线来拟合他们之间的关系： <spanclass="math display">\[\hat{v}(s, \theta)=a s+b=\underbrace{[s, 1]}_{\phi^\top(s)}\underbrace{\left[\begin{array}{c}a \\b\end{array}\right]}_\theta=\phi^\top(s) \theta\]</span> 其中：</p><ul><li><span class="math inline">\(\hat{v}(s, \theta)\)</span>表示对曲线的估计，这里将其拟合为线性关系；</li><li>为了形式的统一，我们将其写为向量相乘的形式，<spanclass="math inline">\(\theta\)</span>表示<strong>参数向量</strong>，<spanclass="math inline">\(\phi(s)\)</span>表示<strong>特征向量</strong>。</li></ul><p>此外，我们也可以用更高阶的曲线进行拟合： <spanclass="math display">\[\hat{v}(s, \theta)=a s^2+bs+c=\underbrace{[s^2, s, 1]}_{\phi^\top(s)}\underbrace{\left[\begin{array}{c}a \\b \\c\end{array}\right]}_\theta=\phi^\top(s) \theta\]</span> 这个时候 <span class="math inline">\(\hat{v}(s, w)\)</span>对于 <span class="math inline">\(s\)</span> 是非线性的，但对于 <spanclass="math inline">\(\theta\)</span>仍保持<strong>线性</strong>，因为非线性参数被蕴含到特征向量中。这将有助于后续的求解<span class="math inline">\(\theta\)</span> 的过程。</p><h2 id="值函数近似">值函数近似</h2><p>值函数近似的核心思想是<strong>用参数化函数替代表格形式</strong>的值函数，从而将强化学习的问题转化为一个<strong>优化问题</strong>。我们用带有参数的函数<span class="math inline">\(\hat{q}(s, a; \theta)\)</span> 或 <spanclass="math inline">\(\hat{v}(s; \theta)\)</span> 近似动作价值函数 <spanclass="math inline">\(q(s, a)\)</span> 或状态价值函数 <spanclass="math inline">\(v(s)\)</span>，其中 <spanclass="math inline">\(\theta\)</span>是函数的参数集合（例如神经网络的权重）。</p><h3 id="目标函数定义">目标函数定义</h3><p>值函数近似需要定义一个目标函数来衡量当前近似值函数与真实值函数的偏差。最常用的目标函数是均方误差（MeanSquared Error，MSE）形式： <span class="math display">\[J(\theta) = \mathbb{E}\left[\left( v_\pi(S) - \hat{v}(S; \theta)\right)^2 \right],\]</span> 通过最小化 <spanclass="math inline">\(J(\theta)\)</span>，我们可以找到最优参数 <spanclass="math inline">\(\theta^*\)</span>。注意。这里的均值 <spanclass="math inline">\(\mathbb{E}\)</span> 实际上有两种处理方法：</p><ol type="1"><li><strong>平均分布</strong>（UniformDistribution）：平等看待所有状态，乘以 <spanclass="math inline">\(1/|\mathcal{S}|\)</span>。但这样并不好，因为目标状态和接近目标的状态实际上会更重要！</li><li><strong>稳态分布</strong>（StationaryDistribution）：用于描述<strong>长期行为</strong>（long-runbehavior），将一个智能体长期放置在环境中，以策略 <spanclass="math inline">\(\pi\)</span>进行交互，最终可以统计出智能体在每个状态停留的概率 <spanclass="math inline">\(\{d_\pi(s)\}_{s\in \mathcal{S}}\)</span>。</li></ol><p>稳态分布也被称为 Steady-state Distribution 或 LimitingDistribution，在这一分布下，目标函数可以转化为： <spanclass="math display">\[J(\theta) = \mathbb{E}\left[\left( v_\pi(S) - \hat{v}(S; \theta)\right)^2 \right]=\sum_{s \in \mathcal{S}}d_\pi(s)\left(v_\pi(s)-\hat{v}(s; \theta)\right)^2\]</span> 在<strong>有模型</strong>的情况下，<spanclass="math inline">\(d_\pi(s)\)</span>也可以直接用<strong>迭代法</strong>计算出来： <spanclass="math display">\[d_\pi^\top=d_\pi^\top P_\pi\]</span></p><h3 id="优化算法和函数选择">优化算法和函数选择</h3><p>值函数近似中，参数优化的核心方法包括<strong>梯度下降</strong>（GradientDescent）及其变种算法。针对目标函数 <spanclass="math inline">\(J(\theta)\)</span>，通过对 <spanclass="math inline">\(\theta\)</span> 计算梯度，可以更新参数：</p><p><span class="math display">\[\theta_{t+1} = \theta_t - \alpha \nabla_\theta J(\theta_t),\]</span></p><p>其中梯度可以展开为： <span class="math display">\[\begin{aligned}\nabla_\theta J(\theta) &amp; =\nabla_\theta\mathbb{E}\left[\left(v_\pi(S)-\hat{v}(S; \theta)\right)^2\right] \\&amp; =\mathbb{E}\left[\nabla_\theta\left(v_\pi(S)-\hat{v}(S;\theta)\right)^2\right] \\&amp; =2 \mathbb{E}\left[\left(v_\pi(S)-\hat{v}(S;\theta)\right)\left(-\nabla_\theta \hat{v}(S; \theta)\right)\right] \\&amp; =-2 \mathbb{E}\left[\left(v_\pi(S)-\hat{v}(S; \theta)\right)\nabla_\theta \hat{v}(S; \theta)\right]\end{aligned}\]</span>为了消除求期望运算，我们使用<strong>随机梯度下降</strong>，则更新公式变为：<span class="math display">\[\theta_{t+1} = \theta_t + \alpha_t \left(v_\pi(s_t)-\hat{v}(s_t;\theta_t)\right) \nabla_\theta \hat{v}(s_t; \theta_t)\]</span> 但还有一个问题，<spanclass="math inline">\(v_\pi(s_t)\)</span> 是未知的。这里有两种方法：</p><ol type="1"><li><p>基于 <strong>MC Learning</strong> 的方法，使用采样的累计汇报<span class="math inline">\(g_t\)</span> 来代替： <spanclass="math display">\[\theta_{t+1} = \theta_t + \alpha_t \left(g_t-\hat{v}(s_t;\theta_t)\right) \nabla_\theta \hat{v}(s_t; \theta_t)\]</span></p></li><li><p>基于 <strong>TD Learning</strong> 的方法，使用 TD Target 来代替：<span class="math display">\[\theta_{t+1} = \theta_t + \alpha_t \left(r_{t+1} + \gamma\hat{v}(s_{t+1};\theta_t) -\hat{v}(s_t; \theta_t)\right) \nabla_\theta\hat{v}(s_t; \theta_t)\]</span></p></li></ol><p>函数选择方面，我们可以使用以下模型进行值函数的近似：</p><ol type="1"><li><p><strong>线性模型</strong>：线性函数 <spanclass="math inline">\(\hat{v}(s; \theta) = \phi(s)^\top\theta\)</span>，其中 <span class="math inline">\(\phi(s)\)</span>是状态特征向量，<strong>需要人工选取特征</strong>。此时优化算法也称为<strong>TD-Linear</strong>： <span class="math display">\[\theta_{t+1} = \theta_t + \alpha_t \left(r_{t+1} + \gamma\phi^\top(s_{t+1}) \theta_t -\phi^\top(s_{t}) \theta_t\right) \phi(s_t)\]</span></p></li><li><p><strong>非线性模型</strong>：如多层感知机（MLP）或卷积神经网络（CNN），<strong>无需人工选取特征</strong>，适用于处理高维状态空间和复杂特征，但缺乏可解释性。</p></li><li><p><strong>核方法</strong>：如高斯核函数，能够较为自然地处理非线性映射。</p></li></ol><h3 id="td-优化目标分析">TD 优化目标分析</h3><p>前面介绍到最常用的目标函数是均方误差形式的<strong>真实残差</strong>（TrueValue Error）： <span class="math display">\[J_E(\theta) = \mathbb{E}\left[\left( v_\pi(S) - \hat{v}(S; \theta)\right)^2 \right]=\left\| v_\pi - \hat{v}(\theta) \right\|^2_D\]</span> 其中 <span class="math inline">\(\left\| \cdot\right\|\)</span> 表示向量取模，下角标 <spanclass="math inline">\(D\)</span> 表示 <spanclass="math inline">\(\{d_\pi(s)\}_{s\in \mathcal{S}}\)</span>构成的对角矩阵，一般有 <span class="math inline">\(\left\| X\right\|^2_D=X^\top D X\)</span>。</p><hr /><p>实际上，还有另一种<strong>贝尔曼残差</strong>（Bellman Error）写为：<span class="math display">\[J_{BE}(\theta)=\left\|\hat{v}(\theta)-\left(r_\pi+\gamma P_\pi\hat{v}(\theta)\right)\right\|_D^2\doteq\left\|\hat{v}(\theta)-T_\pi(\hat{v}(\theta))\right\|_D^2\]</span> 其中 <span class="math inline">\(T_\pi(x) \doteq r_\pi+\gammaP_\pix\)</span>，这是因为我们希望<strong>拟合的值函数也满足贝尔曼公式</strong>，但实际上这两个值可能不相等，于是我们就去最小化贝尔曼残差。</p><hr /><p>而当我们用 TD Target 代替 <spanclass="math inline">\(v_\pi(s_t)\)</span>时，还要考虑到函数选择的问题。由于我们选择的函数很可能最终无法完全逼近真实值函数（例如线性模型），因此<span class="math inline">\(\hat{v}(\theta)\)</span> 和 <spanclass="math inline">\(T_\pi(\hat{v}(\theta))\)</span>可能永远也不会相等，此时我们会对 <spanclass="math inline">\(T(x)\)</span> 再进行一次投影，使其最终能够等于零：<span class="math display">\[J_{PBE}(\theta)=\left\|\hat{v}(\theta)-MT_\pi(\hat{v}(\theta))\right\|_D^2\]</span> 此时的目标我们称为<strong>投影贝尔曼残差</strong>（ProjectedBellman Error）。</p><h3 id="案例分析">案例分析</h3><p>下面用一个网格世界的案例来分析值函数近似的效果，我们首先给出最优状态值对应的可视化结果：</p><p><img src="/img/blog/RL-Note-7-images/Grid-World.png" alt="网格世界案例的最优状态值及其三维可视化" width=90% /></p><p>我们可以利用经验数据进行迭代估计，如果使用 Tabular方法，则最终结果如下：</p><p><img src="/img/blog/RL-Note-7-images/TD-Table.png" alt="TD-Table最终收敛结果" width=70%/></p><p>可以看到随着使用的经验数据变多，均方误差接近 <spanclass="math inline">\(0\)</span>，可视化效果也十分接近真实值。而如果使用一阶线性模型近似，则最终结果如下：</p><p><img src="/img/blog/RL-Note-7-images/TD-Linear-1.png" alt="一阶TD-Linear最终收敛结果" width=90%/></p><p>可以看到拟合出的趋势接近，但实际值仍有较大误差。如果使用更高阶的模型，则效果将会更加还原：</p><p><img src="/img/blog/RL-Note-7-images/TD-Linear-2.png" alt="二阶TD-Linear最终收敛结果" width=70% /></p><p><img src="/img/blog/RL-Note-7-images/TD-Linear-3.png" alt="三阶TD-Linear最终收敛结果" width=70% /></p><h3 id="sarsa-和-q-learning-的应用">SARSA 和 Q-Learning 的应用</h3><p>前面的介绍都是以状态值为主，但我们知道在实际应用中，动作价值将更有助于找到最优策略。这里我们将值函数近似与SARSA 和 Q-Learning 算法结合，实现对高维状态空间的高效学习。</p><ol type="1"><li><p><strong>近似 SARSA</strong>：使用 <spanclass="math inline">\(\hat{q}(s, a; \theta)\)</span> 替代表格形式的<span class="math inline">\(q(s, a)\)</span>，更新公式为： <spanclass="math display">\[\theta_{t+1} = \theta_t + \alpha_t \left( r_{t+1} + \gamma\hat{q}(s_{t+1}, a_{t+1}; \theta_t) - \hat{q}(s_t, a_t; \theta_t)\right) \nabla_\theta \hat{q}(s_t, a_t; \theta_t).\]</span></p></li><li><p><strong>近似 Q-Learning</strong>：更新公式为： <spanclass="math display">\[\theta_{t+1} = \theta_t + \alpha_t \left( r_{t+1} + \gamma \max_{a \inA(s_{t+1})} \hat{q}(s_{t+1}, a; \theta_t) - \hat{q}(s_t, a_t; \theta_t)\right) \nabla_\theta \hat{q}(s_t, a_t; \theta_t).\]</span></p></li></ol><p>与 Tabular 形式的 SARSA 和 Q-Learning 区别在于，我们现在不直接更新<span class="math inline">\(q_t(s,a)\)</span>，而是更新模型参数 <spanclass="math inline">\(\theta_t\)</span>。</p><p>在迭代收敛后，也就完成了策略评估（PE），之后的策略改进（PI）也和之前类似，只不过在选择最优动作时<span class="math inline">\(a=\arg \max_{a \in A(s_t)} \hat{q}(s_t, a;\theta_t)\)</span> 不能直接索引，而是要代入 <spanclass="math inline">\(\hat{q}\)</span><strong>算出函数值再比较</strong>。</p><h2 id="deep-q-network-dqn">Deep Q-Network | DQN</h2><p>值函数近似的进一步发展是<strong>深度 Q 网络</strong>（DeepQ-Network，DQN），它将深度学习引入到 Q-Learning中，使用深度神经网络近似动作价值函数，也被称为 <strong>DeepQ-Learning</strong>。</p><p>DQN 的更新公式与近似 Q-Learning 完全一致，只不过 <spanclass="math inline">\(\hat{q}(s, a; \theta)\)</span>使用了深度神经网络：</p><p><span class="math display">\[\theta_{t+1} = \theta_t + \alpha_t \left( r_{t+1} + \gamma \max_{a \inA(s_{t+1})} \hat{q}(s_{t+1}, a; \theta_t) - \hat{q}(s_t, a_t; \theta_t)\right) \nabla_\theta \hat{q}(s_t, a_t; \theta_t).\]</span></p><p>其优化目标自然就是<strong>贝尔曼最优残差</strong>（Bellman OptimalityError）： <span class="math display">\[J_{BOE}(\theta)=\mathbb{E}\left[\left( R+\gamma \max_{a \in A(S&#39;)}\hat{q}(S&#39;, a; \theta) - \hat{q}(S,A;\theta) \right)^2 \right]\]</span></p><h3 id="目标网络-target-network">目标网络 | Target Network</h3><p>有了这个目标后，我们自然想到用梯度下降来求解。对于 <spanclass="math inline">\(\hat{q}(S,A;\theta)\)</span>很容易就能求出其梯度，但对于 <span class="math inline">\(\max\hat{q}(S&#39;, a; \theta)\)</span> 则必须用上特殊的技巧。</p><p>在 DQN 中，我们令： <span class="math display">\[y \doteq R+\gamma \max_{a \in A(S&#39;)} \hat{q}(S&#39;, a; \theta)\]</span> 在优化过程中，通过将 <span class="math inline">\(y\)</span>固定为一个常量，就可以免去 <span class="math inline">\(\max\)</span>项的优化。具体而言，我们引入两个网络：</p><ul><li><strong>主网络</strong>（Main network）：<spanclass="math inline">\(\hat{q}(s,a;\theta)\)</span>，持续优化的主网络参数，每一步需要计算<span class="math inline">\(\nabla \hat{q}(s,a;\theta)\)</span>进行梯度下降；</li><li><strong>目标网络</strong>（target network）：<spanclass="math inline">\(\hat{q}(s,a;\theta_T)\)</span>，是主网络参数的一个<strong>延迟副本</strong>，在优化的时候<strong>每隔固定步数将主网络参数复制到目标网络中</strong>，而非每一步都更新。</li></ul><p>这样一来，我们就避免了复杂的求梯度运算，且可以让目标值变得更加稳定、单一，从而避免训练过程中振荡或发散。</p><h3 id="经验回放-experience-replay">经验回放 | Experience Replay</h3><p>DQN 还引入了经验回放（ExperienceReplay）机制，用来<strong>打破数据之间的时序相关性</strong>并提高<strong>样本效率</strong>。经验回放的主要步骤如下：</p><ol type="1"><li><strong>存储经验</strong>：将每一步 <spanclass="math inline">\((s_t, a_t, r_{t+1}, s_{t+1})\)</span>存入<strong>回放缓冲区</strong>（Replay Buffer）。</li><li><strong>随机采样</strong>：从缓冲区中随机抽取一个小批量（mini-batch）的经验样本。这种采样方式可以<strong>去除经验之间的时序相关性</strong>，近似独立同分布（i.i.d.）。</li><li><strong>训练网络</strong>：基于抽取的样本计算损失函数，并更新网络参数。</li></ol><p>那么，接下来有几个问题还需要回答：为什么经验回放对于 DQN来说是必须的？为什么采样必须服从<strong>均匀分布</strong>（UniformDistribution），即每个样本采样概率相等？</p><ul><li><p>在目标函数 <span class="math inline">\(J_{BOE}(\theta)\)</span>中，我们假设 <span class="math inline">\((S,A)\sim d\)</span>，其中<span class="math inline">\(d\)</span> 是一个分布，<spanclass="math inline">\((S,A)\)</span>整体视作一个随机变量。在没有明确的先验知识时，通常假设 <spanclass="math inline">\(d\)</span>是均匀分布，即所有状态-动作对同等重要。</p></li><li><p>但在采集数据时，智能体是按照时序顺序生成数据的，导致样本实际分布可能偏离均匀分布。因此，均匀随机采样是一个有效的<strong>近似手段</strong>，能够尽可能还原目标函数的分布假设。</p></li></ul><p>第二个问题，经验回放是如何提高样本效率的？为什么现在需要样本效率了？</p><ul><li>Replay Buffer中的经验允许被反复采样，多次利用。此外，某些关键状态（例如稀疏奖励问题中接近奖励的状态）可能在直接采样的过程中较少出现，经验回放通过保留这些状态，确保训练时样本的多样性。甚至我们可以使用<strong>优先经验回放</strong>（PrioritizedExperience Replay），经验的优先级根据其 TD Error动态更新，确保关键状态的学习次数。</li><li>深度神经网络通常需要大量的数据来稳定训练。如果只依赖实时采样生成的数据，可能无法充分训练神经网络。</li></ul><p>第三个问题，为什么之前表格形式的 Q-Learning 不需要经验回放？</p><ul><li>Deep Q-Learning 的目标是最小化一个标量目标函数 <spanclass="math inline">\(\mathbb{E}_{*,S,A}\)</span>，因此必然涉及到 <spanclass="math inline">\((S,A)\)</span>的分布，也就需要假设均匀分布，进而需要随机采样。</li><li>而基于表格的 Q-Learning 的目标是求解贝尔曼最优公式 —— 对于每个 <spanclass="math inline">\((s,a)\)</span>都要满足的公式，因此不会涉及到分布问题。当然，由于 Q-Learning 本身是off-policy 的，因此想用经验回放也完全没问题！</li></ul><h3 id="具体步骤">具体步骤</h3><p>以下是 DQN 的具体步骤：</p><ol type="1"><li><p>初始化主网络参数 <span class="math inline">\(\theta\)</span>和目标网络参数 <span class="math inline">\(\theta_{T} =\theta\)</span>。</p></li><li><p>初始化回放缓冲区 <spanclass="math inline">\(\mathcal{B}=\{\}\)</span>。</p></li><li><p>重复以下步骤（直到训练完成）：</p><ul><li><p>与环境交互（On-Policy / Off-Policy 都行），得到经验元组 <spanclass="math inline">\((s_t, a_t, r_{t+1}, s_{t+1})\)</span>并存入缓冲区；</p></li><li><p>从缓冲区 <span class="math inline">\(\mathcal{B}\)</span>随机采样一个小批量经验；</p></li><li><p>计算目标值（通过目标网络参数）： <span class="math display">\[y_T = r_{t+1} + \gamma \max_{a&#39;} \hat{q}(s_{t+1}, a&#39;; \theta_T)\]</span></p></li><li><p>最小化损失函数： <span class="math display">\[J(\theta) = \mathbb{E} \left[ \left( y_T - \hat{q}(s_t, a_t; \theta)\right)^2 \right]\]</span></p></li><li><p>用梯度下降（反向传播）更新主网络参数 <spanclass="math inline">\(\theta\)</span>；</p></li><li><p>每隔固定步数 <span class="math inline">\(C\)</span>将主网络参数复制到目标网络参数 <spanclass="math inline">\(\theta_T\)</span>。</p></li></ul></li><li><p>策略更新：</p><ul><li>如果是 On-Policy，需要在更新完 <spanclass="math inline">\(\theta\)</span> 根据 <spanclass="math inline">\(\hat{q}\)</span> 后更新 <spanclass="math inline">\(\hat{\pi}\)</span>，再用于和环境交互生成经验；</li><li>如果是 Off-Policy，则只需要在训练完成后，用收敛的 <spanclass="math inline">\(\hat{q}\)</span> 计算出最终 <spanclass="math inline">\(\hat{\pi}\)</span> 即可。</li></ul></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+      <category>强化学习</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>RL</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>RL 学习笔记 #6 时序差分学习算法</title>
     <link href="/RL-Note-6.html"/>
     <url>/RL-Note-6.html</url>
@@ -2054,9 +2081,9 @@
     
     <tags>
       
-      <tag>IR</tag>
-      
       <tag>NLP</tag>
+      
+      <tag>IR</tag>
       
     </tags>
     
@@ -2083,9 +2110,9 @@
     
     <tags>
       
-      <tag>IR</tag>
-      
       <tag>NLP</tag>
+      
+      <tag>IR</tag>
       
     </tags>
     
@@ -2112,9 +2139,9 @@
     
     <tags>
       
-      <tag>IR</tag>
-      
       <tag>NLP</tag>
+      
+      <tag>IR</tag>
       
       <tag>ML</tag>
       
@@ -2170,9 +2197,9 @@
     
     <tags>
       
-      <tag>IR</tag>
-      
       <tag>NLP</tag>
+      
+      <tag>IR</tag>
       
     </tags>
     
@@ -2253,9 +2280,9 @@
     
     <tags>
       
-      <tag>IR</tag>
-      
       <tag>NLP</tag>
+      
+      <tag>IR</tag>
       
     </tags>
     
@@ -2282,9 +2309,9 @@
     
     <tags>
       
-      <tag>IR</tag>
-      
       <tag>NLP</tag>
+      
+      <tag>IR</tag>
       
     </tags>
     
@@ -2311,9 +2338,9 @@
     
     <tags>
       
-      <tag>IR</tag>
-      
       <tag>NLP</tag>
+      
+      <tag>IR</tag>
       
     </tags>
     
@@ -2340,9 +2367,9 @@
     
     <tags>
       
-      <tag>IR</tag>
-      
       <tag>NLP</tag>
+      
+      <tag>IR</tag>
       
     </tags>
     
@@ -2369,9 +2396,9 @@
     
     <tags>
       
-      <tag>IR</tag>
-      
       <tag>NLP</tag>
+      
+      <tag>IR</tag>
       
     </tags>
     
