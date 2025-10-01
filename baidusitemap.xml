@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://hwcoder.top/ML-Note-2.html</loc>
+    <lastmod>2025-09-28</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/Awesome-Prompts.html</loc>
+    <lastmod>2025-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://hwcoder.top/LeetCode-Greedy.html</loc>
+    <lastmod>2025-09-09</lastmod>
+  </url>
+  <url>
     <loc>https://hwcoder.top/Tool-Call-Format.html</loc>
     <lastmod>2025-08-31</lastmod>
   </url>
@@ -27,10 +39,6 @@
   <url>
     <loc>https://hwcoder.top/Manual-Coding-2.html</loc>
     <lastmod>2025-04-10</lastmod>
-  </url>
-  <url>
-    <loc>https://hwcoder.top/LeetCode-Greedy.html</loc>
-    <lastmod>2025-04-04</lastmod>
   </url>
   <url>
     <loc>https://hwcoder.top/RL-Note-10.html</loc>
@@ -119,10 +127,6 @@
   <url>
     <loc>https://hwcoder.top/LeetCode-Bitwise.html</loc>
     <lastmod>2025-02-23</lastmod>
-  </url>
-  <url>
-    <loc>https://hwcoder.top/Awesome-Prompts.html</loc>
-    <lastmod>2025-02-16</lastmod>
   </url>
   <url>
     <loc>https://hwcoder.top/Zotero-Note-1.html</loc>
@@ -295,10 +299,6 @@
   <url>
     <loc>https://hwcoder.top/IR-Note-1.html</loc>
     <lastmod>2022-11-28</lastmod>
-  </url>
-  <url>
-    <loc>https://hwcoder.top/ML-Note-2.html</loc>
-    <lastmod>2022-11-27</lastmod>
   </url>
   <url>
     <loc>https://hwcoder.top/ML-Note-1.html</loc>
